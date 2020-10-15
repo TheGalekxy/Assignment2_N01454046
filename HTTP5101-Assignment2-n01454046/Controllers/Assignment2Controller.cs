@@ -144,7 +144,6 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                 for(int d2 = 1; d2 <= n; d2++)
                 {
                     int sum = d1 + d2;               
-
                     if(sum == 10)
                     {
                         countOfSum++;
