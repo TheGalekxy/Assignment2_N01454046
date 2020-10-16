@@ -211,9 +211,10 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
         [Route("api/Assignment2/J3/Punchy/{number1}/{letter1}/{value1}")]
         public string punchy(int number1, string letter1, char value1)
         {
-            // int[,] theArray = { { 1, 2 }, { 2, 3 }, { 3, 4 } };
+             object[,] theArray = { { 1, "a", 3 }, { 1, "b", 4 }, { 2, "b", 0 }, { 2, "a", 0 }, { 3, "a", "b" }, { 2, "a", 0 }, { 5, "a", "a" }, { 2, "a", 0 }, { 2, "b", 0 }, { 7, 0, 0 } };
 
-            //int[,] v = theArray[0][1];
+            object v = theArray[2,1];
+            Debug.WriteLine(v);
 
             // Problem J3 - Punchy - 2010
             // What I am attempting to do to solve the question
@@ -222,8 +223,8 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
             // 3. Each element of the array will then be inputed into the logic of the method/function
             // 4. The logic of the function will run based on the number of arrays there are updating the values of A & B each loop or outputting to the console.
 
-        int x = 0;
-        int y = 0;
+            int x = 0;
+            int y = 0;
 
              int function(int number, string letter, char value)
              {
@@ -272,78 +273,82 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                         return B;
                     }
                 }
-                else if (number == 3)
+                else
                 {
-                    if (letter == "A" | letter == "a")
+                    if (number == 3)
                     {
-                        A = A + B;
-                        Debug.WriteLine(A);
-                        x = A;
-                        return A;
+                        if (letter == "A" | letter == "a" && letter == )
+                        {
+                            A = A + B;
+                            Debug.WriteLine(A);
+                            x = A;
+                            return A;
+                        }
+                        else
+                        {
+                            B = A + B;
+                            y = B;
+                            Debug.WriteLine(B);
+                            return B;
+                        }
+                    }
+                    else if (number == 4)
+                    {
+                        if (letter == "A" | letter == "a")
+                        {
+                            A = A * B;
+                            Debug.WriteLine(A);
+                            x = A;
+                            return A;
+                        }
+                        else
+                        {
+                            B = A * B;
+                            Debug.WriteLine(B);
+                            y = B;
+                            return B;
+                        }
+                    }
+                    else if (number == 5)
+                    {
+                        if (letter == "A" | letter == "a")
+                        {
+                            A = A - B;
+                            Debug.WriteLine(A);
+                            x = A;
+                            return A;
+                        }
+                        else
+                        {
+                            B = A - B;
+                            Debug.WriteLine(B);
+                            y = B;
+                            return B;
+                        }
+                    }
+                    else if (number == 6)
+                    {
+                        if (letter == "A" | letter == "a")
+                        {
+                            A = A / B;
+                            Debug.WriteLine(A);
+                            x = A;
+                            return A;
+                        }
+                        else
+                        {
+                            B = B / A;
+                            Debug.WriteLine(B);
+                            y = B;
+                            return B;
+                        }
                     }
                     else
                     {
-                        B = A + B;
-                        y = B;
-                        Debug.WriteLine(B);
-                        return B;
+                        return 1;
                     }
                 }
-                else if (number == 4)
-                {
-                    if (letter == "A" | letter == "a")
-                    {
-                        A = A * B;
-                        Debug.WriteLine(A);
-                        x = A;
-                        return A;
-                    }
-                    else
-                    {
-                        B = A * B;
-                        Debug.WriteLine(B);
-                        y = B;
-                        return B;
-                    }
-                }
-                else if (number == 5)
-                {
-                    if (letter == "A" | letter == "a")
-                    {
-                        A = A - B;
-                        Debug.WriteLine(A);
-                        x = A;
-                        return A;
-                    }
-                    else
-                    {
-                        B = A - B;
-                        Debug.WriteLine(B);
-                        y = B;
-                        return B;
-                    }
-                }
-                else if (number == 6)
-                {
-                    if (letter == "A" | letter == "a")
-                    {
-                        A = A / B;
-                        Debug.WriteLine(A);
-                        x = A;
-                        return A;
-                    } 
-                    else
-                    {
-                        B = B / A;
-                        Debug.WriteLine(B);
-                        y = B;
-                        return B;
-                    }
-                }
-                else 
-                {
-                    return 1;
-                }
+                
 
                 
              }
