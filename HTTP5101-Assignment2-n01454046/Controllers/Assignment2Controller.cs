@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Diagnostics;
 
 namespace HTTP5101_Assignment2_n01454046.Controllers
 {
@@ -23,17 +24,29 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
         [Route("api/Assignment2/J1/Menu/{burger}/{drink}/{side}/{dessert}")]
         public string menu(int burger, int drink, int side, int dessert)
         {
+            // Setting Variables to hold the calorie values of the food items
             int burgerCalories;
             int drinkCalories;
             int sideCalories;
             int dessertCalories;
+
+            // Setting a variable to keep track of the total calories of all the food items combined
             int totalCalories = 0;
+
+            // Setting a string value to be part of the final message that is returned
             string message = "Your total calorie count is ";
+
+            // Setting a string variable to be the final message
             string finalMessage;
 
+
+            // Checking to see what the input value of "burger" is
             if(burger == 1)
             {
+                // Setting the burgerCalories variable to hold an int based on the users selection
                 burgerCalories = 461;
+
+                // Updating the totalCalories variable with the updated burgerCalories number
                 totalCalories = totalCalories + burgerCalories;
          
             } 
@@ -53,10 +66,13 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                 totalCalories = totalCalories + burgerCalories;
             }
 
-
+            // Checking to see what the input value of "drink" is
             if (drink == 1)
             {
+                // Setting the drinkCalories variable to hold an int based on the users selection
                 drinkCalories = 130;
+
+                // Updating the totalCalories variable with the updated drinkCalories number
                 totalCalories = totalCalories + drinkCalories;
             }
             else if (drink == 2)
@@ -75,9 +91,13 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                 totalCalories = totalCalories + drinkCalories;
             }
 
+            // Checking to see what the input value of "side" is
             if (side == 1)
             {
+                // Setting the sideCalories variable to hold an int based on the users selection
                 sideCalories = 100;
+
+                // Updating the totalCalories variable with the updated sideCalories number
                 totalCalories = totalCalories + sideCalories;
             }
             else if (side == 2)
@@ -96,9 +116,13 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                 totalCalories = totalCalories + sideCalories;
             }
 
+            // Checking to see what the input value of "dessert" is
             if (dessert == 1)
             {
+                // Setting the dessertCalories variable to hold an int based on the users selection
                 dessertCalories = 167;
+
+                // Updating the totalCalories variable with the updated dessertCalories number
                 totalCalories = totalCalories + dessertCalories;
             }
             else if (dessert == 2)
@@ -117,7 +141,10 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                 totalCalories = totalCalories + dessertCalories;
             }
 
+            // Updating the finalMessage variable with the message initialized earlier + the int of totalCalories
             finalMessage = message + totalCalories;
+
+            // Returning the final message
             return finalMessage;
 
         }
@@ -134,16 +161,22 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
         [Route("api/Assignment2/J2/diceGame/{m}/{n}")]
         public string diceGame(int m, int n)
         {
+            // Initializing a int variable to count the number of times 10 can be rolled
             int countOfSum = 0;
-            string finalMessage;
-            string message;
-            
 
-            for(int d1 = 1; d1 <= m; d1++)
+            // Initializing a string variable to be the final message
+            string finalMessage;
+            
+            // Looping through all sides of the first dice
+            for(int dice1 = 1; dice1 <= m; dice1++)
             {
-                for(int d2 = 1; d2 <= n; d2++)
+                // Looping through each side of the second dice every 1 side of the first dice
+                for(int dice2 = 1; dice2 <= n; dice2++)
                 {
-                    int sum = d1 + d2;               
+                    // adding the value of each dices side together
+                    int sum = dice1 + dice2;     
+                    
+                    // if the sum of each dices side is 10 then add one to the count of the number of times 10 is rolled
                     if(sum == 10)
                     {
                         countOfSum++;
@@ -152,27 +185,31 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
 
             }
 
+            // if 10 can be rolled once, update the final message variable with this string
             if(countOfSum == 1)
             {
                 finalMessage = "There is " + countOfSum + " way to get the sum 10.";
-            } 
-            else if(countOfSum >= 5)
+            }
+            // if 10 can be rolled 5 or more times, update the final message variable with this string
+            else if (countOfSum >= 5)
             {
                 finalMessage = "There are " + countOfSum + " total ways to get the sum 10.";
             }
+            // all others options will update the final message with this string
             else
             {
                 finalMessage = "There are " + countOfSum + " ways to get the sum 10.";
             }
             
+            // Return the updated final message
             return finalMessage;
         }
 
 
 
         [HttpGet]
-        [Route("api/Assignment2/J3/Punchy/{number}/{letter}/{value}")]
-        public string punchy(int number, string letter, char value)
+        [Route("api/Assignment2/J3/Punchy/{number1}/{letter1}/{value1}")]
+        public string punchy(int number1, string letter1, char value1)
         {
             // int[,] theArray = { { 1, 2 }, { 2, 3 }, { 3, 4 } };
 
@@ -184,16 +221,113 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
             // 2. Loop through each array within the nested array. Each array will be formated like this [number, letter, value] following the format of the sample input.
             // 3. Each element of the array will then be inputed into the logic of the method/function
 
-            int A = 0;
-            int B = 0;
+        int x = 0;
 
-            if(number == 1)
-            {
-                letter = value;
-            } 
+             int function(int number, string letter, char value)
+             {
 
+                int A = 0;
+                int B = 0;
+                
 
-            return "This is the number: " + number + " this is the string: " + letter + " this is the char: " + value ;
+                if (number == 1)
+                {
+                    if (letter == "A" | letter == "a")
+                    {
+                        A = value;
+                        value = (char)Convert.ToInt32(value);
+                        Debug.WriteLine(value);
+                        Debug.WriteLine(A);
+                        Debug.WriteLine(x);
+                        Debug.WriteLine(Convert.ToInt32(A));
+                        return x = Convert.ToInt32(A);
+                    }
+                    else
+                    {
+                        B = value;
+                        return B;
+                    }
+
+                }
+                else if (number == 2)
+                {
+                    if (letter == "A" | letter == "a")
+                    {
+                        Debug.WriteLine(A);
+                        A = A;
+                        return A;
+                    } 
+                    else
+                    {
+
+                        Debug.WriteLine(B);
+                        B = B;
+                        return B;
+                    }
+                }
+                else if (number == 3)
+                {
+                    if (letter == "A" | letter == "a")
+                    {
+                        A = A + B;
+                        return A;
+                    }
+                    else
+                    {
+                        B = A + B;
+                        return B;
+                    }
+                }
+                else if (number == 4)
+                {
+                    if (letter == "A" | letter == "a")
+                    {
+                        A = A * B;
+                        return A;
+                    }
+                    else
+                    {
+                        B = A * B;
+                        return B;
+                    }
+                }
+                else if (number == 5)
+                {
+                    if (letter == "A" | letter == "a")
+                    {
+                        A = A - B;
+                        return A;
+                    }
+                    else
+                    {
+                        B = A - B;
+                        return B;
+                    }
+                }
+                else if (number == 6)
+                {
+                    if (letter == "A" | letter == "a")
+                    {
+                        A = A / B;
+                        return A;
+                    } 
+                    else
+                    {
+                        B = B / A;
+                        return B;
+                    }
+                }
+                else 
+                {
+                    return 1;
+                }
+
+                
+             }
+
+             function(number1, letter1, value1);
+
+             return "This is the number: " + number1 + " this is the string: " + letter1 + " this is the char: " + value1 + " this is X: " + x ;
 
         }
     }
