@@ -211,7 +211,18 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
         [Route("api/Assignment2/J3/Punchy/{number1}/{letter1}/{value1}")]
         public string punchy(int number1, string letter1, char value1)
         {
-             object[,] theArray = { { 1, "a", 3 }, { 1, "b", 4 }, { 2, "b", 0 }, { 2, "a", 0 }, { 3, "a", "b" }, { 2, "a", 0 }, { 5, "a", "a" }, { 2, "a", 0 }, { 2, "b", 0 }, { 7, 0, 0 } };
+             object[,] theArray = { 
+                { 1, "a", 3 }, 
+                { 1, "b", 4 }, 
+                { 2, "b", 0 }, 
+                { 2, "a", 0 }, 
+                { 3, "a", "b" }, 
+                { 2, "a", 0 }, 
+                { 5, "a", "a" }, 
+                { 2, "a", 0 }, 
+                { 2, "b", 0 }, 
+                { 7, 0, 0 } 
+            };
 
             object v = theArray[2,1];
             Debug.WriteLine(v);
@@ -226,10 +237,12 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
             int x = 0;
             int y = 0;
 
+
+           
              int function(int number, string letter, char value)
              {
 
-                int A = 3;
+                int A = 1;
                 int B = 2;
                 
 
@@ -275,77 +288,139 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                 }
                 else
                 {
+                    string inBetween = Char.ToString(value);
+
                     if (number == 3)
                     {
-                        if (letter == "A" | letter == "a" && letter == )
+                        // string inBetween = Char.ToString(value);
+                        // A = int.Parse(inBetween);
+
+                        if (letter == "A" | letter == "a" && inBetween == "b" | inBetween == "B")
                         {
                             A = A + B;
                             Debug.WriteLine(A);
                             x = A;
                             return A;
                         }
-                        else
+                        else if (letter == "B" | letter == "B" && inBetween == "a" | inBetween == "a")
                         {
                             B = A + B;
                             y = B;
                             Debug.WriteLine(B);
                             return B;
                         }
-                    }
+                        else if (letter == "A" | letter == "a" && inBetween == "a" | inBetween == "A")
+                        {
+                            A = A + A;
+                            x = A;
+                            Debug.WriteLine(A);
+                            return A;
+                        } 
+                        else
+                        {
+                            B = B + B;
+                            y = B;
+                            Debug.WriteLine(B);
+                            return B;
+                        }
+                    } 
                     else if (number == 4)
                     {
-                        if (letter == "A" | letter == "a")
+                        if (letter == "A" | letter == "a" && inBetween == "b" | inBetween == "B")
                         {
                             A = A * B;
                             Debug.WriteLine(A);
                             x = A;
                             return A;
                         }
-                        else
+                        else if (letter == "B" | letter == "B" && inBetween == "a" | inBetween == "a")
                         {
                             B = A * B;
-                            Debug.WriteLine(B);
                             y = B;
+                            Debug.WriteLine(B);
+                            return B;
+                        }
+                        else if (letter == "A" | letter == "a" && inBetween == "a" | inBetween == "A")
+                        {
+                            A = A * A;
+                            x = A;
+                            Debug.WriteLine(A);
+                            return A;
+                        }
+                        else
+                        {
+                            B = B * B;
+                            y = B;
+                            Debug.WriteLine(B);
                             return B;
                         }
                     }
                     else if (number == 5)
                     {
-                        if (letter == "A" | letter == "a")
+                        if (letter == "A" | letter == "a" && inBetween == "b" | inBetween == "B")
                         {
                             A = A - B;
                             Debug.WriteLine(A);
                             x = A;
                             return A;
                         }
-                        else
+                        else if (letter == "B" | letter == "B" && inBetween == "a" | inBetween == "a")
                         {
                             B = A - B;
-                            Debug.WriteLine(B);
                             y = B;
+                            Debug.WriteLine(B);
+                            return B;
+                        }
+                        else if (letter == "A" | letter == "a" && inBetween == "a" | inBetween == "A")
+                        {
+                            A = A - A;
+                            x = A;
+                            Debug.WriteLine(A);
+                            return A;
+                        }
+                        else
+                        {
+                            B = B - B;
+                            y = B;
+                            Debug.WriteLine(B);
                             return B;
                         }
                     }
                     else if (number == 6)
                     {
-                        if (letter == "A" | letter == "a")
+                        if (letter == "A" | letter == "a" && inBetween == "b" | inBetween == "B")
                         {
                             A = A / B;
                             Debug.WriteLine(A);
                             x = A;
                             return A;
                         }
+                        else if (letter == "B" | letter == "B" && inBetween == "a" | inBetween == "a")
+                        {
+                            B = A / B;
+                            y = B;
+                            Debug.WriteLine(B);
+                            return B;
+                        }
+                        else if (letter == "A" | letter == "a" && inBetween == "a" | inBetween == "A")
+                        {
+                            A = A / A;
+                            x = A;
+                            Debug.WriteLine(A);
+                            return A;
+                        }
                         else
                         {
-                            B = B / A;
-                            Debug.WriteLine(B);
+                            B = B / B;
                             y = B;
+                            Debug.WriteLine(B);
                             return B;
                         }
                     }
                     else
                     {
-                        return 1;
+                        // Would like to return 7 to finish the loop in-case the loop doesn't stop as intended
+                        return 7;
                     }
                 }
                 
@@ -353,6 +428,7 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                 
              }
 
+            // Ideally I would have a while/for each loop running and inputing each value from the nested array into the function parameters, and repeating until there is no more arrays to loop through
              function(number1, letter1, value1);
 
              return "This is the number: " + number1 + " this is the string: " + letter1 + " this is the char: " + value1 + " this is A: " + x + " This is B: " + y ;
