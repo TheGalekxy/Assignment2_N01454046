@@ -220,31 +220,38 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
             // 1. Take in the desired input, To me a nested array seems to make the most sense as an input
             // 2. Loop through each array within the nested array. Each array will be formated like this [number, letter, value] following the format of the sample input.
             // 3. Each element of the array will then be inputed into the logic of the method/function
+            // 4. The logic of the function will run based on the number of arrays there are updating the values of A & B each loop or outputting to the console.
 
         int x = 0;
+        int y = 0;
 
              int function(int number, string letter, char value)
              {
 
-                int A = 0;
-                int B = 0;
+                int A = 3;
+                int B = 2;
                 
 
                 if (number == 1)
                 {
                     if (letter == "A" | letter == "a")
                     {
-                        A = value;
-                        value = (char)Convert.ToInt32(value);
+
+                        string inBetween = Char.ToString(value);
+                        A = int.Parse(inBetween);
+                        x = A;
+                        Debug.WriteLine(inBetween);
                         Debug.WriteLine(value);
                         Debug.WriteLine(A);
                         Debug.WriteLine(x);
-                        Debug.WriteLine(Convert.ToInt32(A));
-                        return x = Convert.ToInt32(A);
+                        
+                        return A;
                     }
                     else
                     {
-                        B = value;
+                        string inBetween = Char.ToString(value);
+                        B = int.Parse(inBetween);
+                        x = B;
                         return B;
                     }
 
@@ -254,14 +261,14 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                     if (letter == "A" | letter == "a")
                     {
                         Debug.WriteLine(A);
-                        A = A;
+                        x = A;
                         return A;
                     } 
                     else
                     {
 
                         Debug.WriteLine(B);
-                        B = B;
+                        y = B;
                         return B;
                     }
                 }
@@ -270,11 +277,15 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                     if (letter == "A" | letter == "a")
                     {
                         A = A + B;
+                        Debug.WriteLine(A);
+                        x = A;
                         return A;
                     }
                     else
                     {
                         B = A + B;
+                        y = B;
+                        Debug.WriteLine(B);
                         return B;
                     }
                 }
@@ -283,11 +294,15 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                     if (letter == "A" | letter == "a")
                     {
                         A = A * B;
+                        Debug.WriteLine(A);
+                        x = A;
                         return A;
                     }
                     else
                     {
                         B = A * B;
+                        Debug.WriteLine(B);
+                        y = B;
                         return B;
                     }
                 }
@@ -296,11 +311,15 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                     if (letter == "A" | letter == "a")
                     {
                         A = A - B;
+                        Debug.WriteLine(A);
+                        x = A;
                         return A;
                     }
                     else
                     {
                         B = A - B;
+                        Debug.WriteLine(B);
+                        y = B;
                         return B;
                     }
                 }
@@ -309,11 +328,15 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
                     if (letter == "A" | letter == "a")
                     {
                         A = A / B;
+                        Debug.WriteLine(A);
+                        x = A;
                         return A;
                     } 
                     else
                     {
                         B = B / A;
+                        Debug.WriteLine(B);
+                        y = B;
                         return B;
                     }
                 }
@@ -327,7 +350,7 @@ namespace HTTP5101_Assignment2_n01454046.Controllers
 
              function(number1, letter1, value1);
 
-             return "This is the number: " + number1 + " this is the string: " + letter1 + " this is the char: " + value1 + " this is X: " + x ;
+             return "This is the number: " + number1 + " this is the string: " + letter1 + " this is the char: " + value1 + " this is A: " + x + " This is B: " + y ;
 
         }
     }
